@@ -1,0 +1,26 @@
+<div id="todo-content" *ngIf="todos.length; else noTodos">
+  <div class="todos-list" [class.todo-list-mobile]="deviceType == 'mobile'">
+    <div *ngFor="let t of todos" class="todo-item">
+      <mat-icon [style.color]="t.completed ? 'var(--primary)' : 'var(--secondary)'">
+        {{ t.completed ? 'check' : 'close' }}
+      </mat-icon>
+      <p>
+        <b>
+          Título:
+        </b>
+        {{t.title}}
+      </p>
+    </div>
+  </div>
+</div>
+
+<ng-template #noTodos>
+  <div class="no-todos">
+    <h2>
+      Uma pena! :(
+    </h2>
+    <p>
+      Não existem todos para o userId: {{ userId }}
+    </p>
+  </div>
+</ng-template>

@@ -1,1 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #3e4095;
+  --secondary: #ed3237;
+  --positivo: #50a773;
+  --negativo: #fc4a71;
+  --fonte-destaque: #333;
+  --fonte-normal: rgb(66, 70, 77);
+  --fonte-fraca: #777;
+  --fundo: #f2f3f8;
+  --fundo-elemento: #fff;
+  --cor-borda: rgba(0, 0, 0, 0.1);
+  --backdrop: rgba(0, 0, 0, 0.5);
+  --backdrop-fraco: rgba(0, 0, 0, 0.1);
+  --backdrop-minimo: rgba(0, 0, 0, 0.04);
+  --sombra: 1px 1px 10px rgba(0, 0, 0, 0.10);
+  --sombra-fraca: 1px 1px 5px rgba(0, 0, 0, 0.10);
+  --cor-fundo-loader: rgba(237, 232, 241, 0.8);
+}
+
+:host {
+  font-size: 14px;
+  color: var(--fonte-normal);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: var(--fundo);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px !important;
+  font-family: 'Poppins', sans-serif !important;
+  line-height: 1.3 !important;
+  color: var(--fonte-normal);
+}
+
+select,
+textarea,
+input,
+mat-select {
+  font-size: 16px !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+mat-icon {
+  color: var(--fonte-normal);
+}
+
+p {
+  margin: 0 !important;
+  font-family: 'Poppins', sans-serif !important;
+  color: var(--fonte-normal);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.container {
+  padding: 15px 7% !important;
+}
+
+
+.material-input-wrapper {
+  background: var(--fundo-elemento);
+  height: 59.91px;
+  align-items: center;
+  display: flex;
+  position: relative;
+  margin: 0px;
+
+  .material-input-label {
+    font-size: 11px;
+    color: #555;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    line-height: 1;
+    padding: 0px 5px 0px 5px;
+    background-color: var(--fundo-elemento);
+    border-radius: 5px;
+  }
+
+  .material-input {
+    height: 52px;
+    outline: none;
+    padding: 0px 0px 0px 10px;
+    color: #555;
+    flex: 1;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: transparent;
+  }
+
+  .material-input-with-button {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .material-input-button {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    background-color: var(--primary);
+    color: var(--fundo-elemento) !important;
+    flex: 0;
+    height: 52px;
+  }
+}
+
+.material-input:hover {
+  border: 2px solid #333;
+}
+
+.material-input:disabled {
+  background-color: var(--cor-borda);
+
+  .material-input-label {
+    background-color: var(--cor-borda);
+  }
+}
+
+.material-input-button:disabled {
+  background: var(--cor-borda) !important;
+  color: #333 !important;
+  cursor: not-allowed !important;
+}

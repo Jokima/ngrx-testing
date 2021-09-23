@@ -1,0 +1,30 @@
+<div id="main-content" [class.main-content-mobile]="(deviceType$ | async)?.deviceType == 'mobile'">
+  <div id="login-card" [class.login-card-mobile]="(deviceType$ | async)?.deviceType == 'mobile'">
+    <div id="login-label">
+      <h2>Seu ID</h2>
+      <p>
+        Informe seu ID de usuário para visualizar seus to-dos.
+      </p>
+    </div>
+    <div id="login-form">
+      <div class="material-input-wrapper" style="margin-bottom: 10px">
+        <span class="material-input-label">ID</span>
+        <input
+          type="text"
+          class="material-input w-100"
+          [(ngModel)]="userId"
+          placeholder="Insira seu id de usuário"
+        />
+      </div>
+    </div>
+    <div id="login-button">
+      <app-custom-button
+        [icon]="'exit_to_app'"
+        [label]="'Iniciar'"
+        [backgroundColor]="'var(--primary)'"
+        [color]="'var(--fundo-elemento)'"
+        (onClick)="setUserId()"
+      ></app-custom-button>
+    </div>
+  </div>
+</div>

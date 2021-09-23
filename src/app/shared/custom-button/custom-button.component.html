@@ -1,0 +1,10 @@
+<button
+  (click)="onClick.emit()"
+  class="custom-button"
+  [style.backgroundColor]="backgroundColor"
+  [style.height]="height"
+  [style.width]="width"
+>
+  <mat-icon *ngIf="icon" [style.color]="color" [style.paddingRight]="label ? '5px' : '0px'">{{ icon }}</mat-icon>
+  <p *ngIf="label" [style.color]="color">{{ label }}</p>
+</button>
