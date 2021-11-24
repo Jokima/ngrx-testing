@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppRouterService } from 'src/app/shared/app-router.service';
-import { getTodos } from 'src/app/store/app.actions';
-import { AppState, Todo } from 'src/app/store/app.reducer';
+import { getTodos } from 'src/app/store/todo/todo.actions';
+import { Todo } from 'src/app/store/todo/todo.reducer';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'app-todos',
@@ -15,11 +16,17 @@ export class TodosComponent implements OnInit {
   userId!: string;
   todos!: Array<Todo>;
 
-  constructor(private store: Store<{global: AppState}>, private routerService: AppRouterService) {
-    this.store.select('global').subscribe(data => {
-      this.deviceType = data.deviceType;
-      this.userId = data.userId;
+  constructor(private store: Store<fromApp.AppState>, private routerService: AppRouterService) {
+    this.store.select('todo').subscribe(data => {
       this.todos = data.todos;
+    });
+
+    this.store.select('auth').subscribe(data => {
+      this.userId = data.userId;
+    });
+
+    this.store.select('deviceType').subscribe(data => {
+      this.deviceType = data.deviceType;
     });
 
     if (this.userId != '') {

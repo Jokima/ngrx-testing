@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { updateDevicetype } from './store/app.actions';
-import { AppState } from './store/app.reducer';
+import { updateDevicetype } from './store/deviceType/deviceType.actions';
+import * as fromApp from './store/app.reducer';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
 
   isLoading!: boolean;
 
-  constructor(private store: Store<{global: AppState}>) {
-    this.store.select('global').subscribe(data => {
+  constructor(private store: Store<fromApp.AppState>) {
+    this.store.select('loading').subscribe(data => {
       this.isLoading = data.isLoading;
     });
   }

@@ -1,47 +1,20 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import * as AppActions from './app.actions';
+import { ActionReducerMap } from '@ngrx/store';
+
+import * as fromAuth from './auth/auth.reducer';
+import * as fromDeviceType from './deviceType/deviceType.reducer';
+import * as fromLoading from './loading/loading.reducer';
+import * as fromTodo from './todo/todo.reducer';
 
 export interface AppState {
-  deviceType: string;
-  userId: string;
-  todos: Array<Todo>;
-  isLoading: boolean;
+  auth: fromAuth.AuthState;
+  deviceType: fromDeviceType.DeviceTypeState;
+  loading: fromLoading.LoadingState;
+  todo: fromTodo.TodoState;
 }
 
-export interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-const initialState: AppState = {
-  deviceType: 'desktop',
-  userId: '',
-  todos: [],
-  isLoading: false,
+export const appReducer: ActionReducerMap<AppState> = {
+  auth: fromAuth.authReducer,
+  deviceType: fromDeviceType.deviceTypeReducer,
+  loading: fromLoading.loadingReducer,
+  todo: fromTodo.todoReducer,
 };
-
-const reducer = createReducer(
-  initialState,
-  on(AppActions.updateDevicetype, (state, action) => {
-    state = { ...state, deviceType: action.payload };
-    return state;
-  }),
-  on(AppActions.setLoading, (state, action) => {
-    state = { ...state, isLoading: action.payload };
-    return state;
-  }),
-  on(AppActions.setUser, (state, action) => {
-    state = { ...state, userId: action.userId };
-    return state;
-  }),
-  on(AppActions.setTodos, (state, action) => {
-    state = { ...state, todos: [...action.todos] };
-    return state;
-  })
-);
-
-export function appReducer(state = initialState, action: Action) {
-  return reducer(state, action);
-}
